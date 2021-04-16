@@ -1,0 +1,31 @@
+{{extend './_layouts/home.html'}}
+
+{{block 'title'}}{{'在线博客 - 首页'}}{{/block}}
+
+{{block 'body'}}
+<script src="../public/js/jquery.min.js"></script>
+<section class="container">
+  <ul class="media-list">
+    {{ each topic }}
+    <li class="media">
+      <div class="media-left">
+        <a href="#">
+          <img width="40" height="40" class="media-object" src="../public/img/avatar-max-img.png" alt="...">
+        </a>
+      </div>
+      <div class="media-body">
+        <input type="hidden" value="{{ $value.id }}" id="index" name="index">
+        <!-- 帖子内部暂无开发 -->
+        <h4 class="media-heading"><a href="#" id="title">{{ $value.title }}</a></h4>
+        <p>
+          <h5 id="content">{{ $value.content }}</h5> · {{ $value.create_time }}
+        </p>
+      </div>
+    </li>
+    {{ /each }}
+  </ul>
+</section>
+<script>
+  console.log($('#index').val());
+</script>
+{{/block}}

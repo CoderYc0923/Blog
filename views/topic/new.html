@@ -1,0 +1,45 @@
+{{extend '../_layouts/home.html'}}
+
+{{block 'title'}}{{'多人博客 - 首页'}}{{/block}}
+
+{{block 'body'}}
+<section class="container">
+  <div class="row">
+    <div class="col-md-5">
+      <form id="new_form" method="post" action="/topics/new">
+        <div class="form-group">
+          <label for="title">标题</label>
+          <input type="text" class="form-control" id="title" name="title" placeholder="标题">
+        </div>
+        <div class="form-group">
+          <label for="content">内容</label>
+          <textarea class="form-control" id="content" name="content" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+    </div>
+  </div>
+</section>
+<script src="../public/js/jquery.min.js"></script>
+<script>
+  $('#new_form').on('submit', function (e) {
+    // 表单具有默认的提交行为，默认是同步的，同步表单提交，浏览器会锁死（转圈儿）等待服务端的响应结果。
+    // 表单的同步提交之后，无论服务端响应的是什么，都会直接把响应的结果覆盖掉当前页面。
+
+    
+    //取消事件的默认动作
+    e.preventDefault()
+    //输出序列化表单值的结果
+    var formData = $(this).serialize()
+    $.ajax({
+      url: '/topics/new',
+      type: 'post',
+      data: formData,
+      dataType: 'json',
+      success: function (data) {
+        window.location.href = '/'
+      }
+    })
+  })
+</script>
+{{/block}}

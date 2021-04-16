@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>{{block 'title'}}默认标题{{/block}}</title>
+  <link rel="stylesheet" href="../../public/css/bootstrap.min.css">
+  {{block 'head'}}{{/block}}
+</head>
+
+<body>
+  {{include '../_partials/header.html'}}
+  {{block 'body'}}{{/block}}
+  {{include '../_partials/footer.html'}}
+  <script src="../../public/js/jquery.min.js"></script>
+  <script src="../../public/js/bootstrap.min.js"></script>
+  {{block 'script'}}{{/block}}
+</body>
+<style>
+  .navbar-brand{
+    padding: 1px 15px;
+  }
+</style>
+</html>
